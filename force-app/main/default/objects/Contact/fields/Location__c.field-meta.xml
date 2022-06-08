@@ -6,6 +6,6 @@
     <label>Location</label>
     <required>false</required>
     <scale>7</scale>
-    <trackFeedHistory>false</trackFeedHistory>
+    <trackFeedHistory>true</trackFeedHistory>
     <type>Location</type>
 </CustomField>
