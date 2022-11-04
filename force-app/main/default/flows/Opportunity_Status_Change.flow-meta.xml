@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
         <processMetadataValues>
@@ -13,6 +13,7 @@
         <locationY>200</locationY>
         <actionName>SlackOpportunityPublisher</actionName>
         <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -41,7 +42,7 @@
             <processMetadataValues>
                 <name>objectType</name>
                 <value>
-                    <stringValue />
+                    <stringValue></stringValue>
                 </value>
             </processMetadataValues>
             <processMetadataValues>
@@ -56,22 +57,21 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <apiVersion>49.0</apiVersion>
     <assignments>
         <name>myVariable_waitStartTimeAssignment</name>
         <label>myVariable_waitStartTimeAssignment</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference
-            >myVariable_waitStartTimeVariable</assignToReference>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>$Flow.CurrentDateTime</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference
-            >isChangedDecision2_myRule_1_StageName</targetReference>
+            <targetReference>isChangedDecision2_myRule_1_StageName</targetReference>
         </connector>
     </assignments>
     <decisions>
@@ -94,12 +94,10 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference
-                >myVariable_old.StageName</leftValueReference>
+                <leftValueReference>myVariable_old.StageName</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
-                    <elementReference
-                    >myVariable_current.StageName</elementReference>
+                    <elementReference>myVariable_current.StageName</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -148,8 +146,7 @@
                         <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference
-                >isChangedRule_2_myRule_1_StageName</leftValueReference>
+                <leftValueReference>isChangedRule_2_myRule_1_StageName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -161,9 +158,7 @@
             <label>Stage Change?</label>
         </rules>
     </decisions>
-    <description
-    >When the status of an opportunity changes, post the new status to Slack</description>
-    <status>ACTIVE</status>
+    <description>When the status of an opportunity changes, post the new status to Slack</description>
     <interviewLabel>Opportunity_Status_Change-1_InterviewLabel</interviewLabel>
     <label>Opportunity Status Change</label>
     <processMetadataValues>
@@ -191,8 +186,8 @@
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
-    <startElementReference
-    >myVariable_waitStartTimeAssignment</startElementReference>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
